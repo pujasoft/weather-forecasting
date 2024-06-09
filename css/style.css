@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+  
+}
+#my-div{
+    background-image: url("../media/rainy.jpeg");
+    height:100vh;
+   
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#weather-info{
+background-color: black;
+
+height: 200px;
+width: 300px;
+border-radius: 10%;
+opacity: 90%;
+font-size: 20px;
+}
+
+#search-data{
+ margin-top: 20px;
+ margin-left: 20px;
+ 
+}
+
+#location{
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+     border-radius: 20px;
+     opacity: 90%;
+     color: #a0d18c;
+     width: 200px;
+     height: 30px;
+     padding-left: 10px;
+     background-color: black;
+}
+
+#output{
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 30px;
+}
+
+#weather-icon{
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 10px;
+    margin-bottom: 0;
+    display: none;
+}
