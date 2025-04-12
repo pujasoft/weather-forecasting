@@ -1,0 +1,217 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #161616, #3e4248);
+  overflow: hidden;
+}
+
+#my-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 500px; /* Increased from 450px to 500px */
+  padding: 20px;
+}
+
+#weather-info {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px; /* Increased from 30px to 40px */
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+#weather-info:hover {
+  transform: translateY(-5px);
+}
+
+#search-data {
+  display: flex;
+  gap: 15px; /* Increased from 10px to 15px for better spacing */
+  margin-bottom: 30px; /* Increased from 20px to 30px */
+}
+
+#location {
+  flex: 1;
+  padding: 15px 25px; /* Increased from 12px 20px to 15px 25px */
+  border: none;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#location::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#location:focus {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.02);
+}
+
+#search-btn {
+  padding: 15px 30px; /* Increased from 12px 25px to 15px 30px */
+  border: none;
+  border-radius: 50px;
+  background: #4b5563;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  min-width: 90px; /* Increased from 80px to 90px */
+  white-space: nowrap;
+}
+
+#search-btn:hover {
+  background: #374151;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(75, 85, 99, 0.4);
+}
+
+#search-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+#search-btn:hover::before {
+  width: 200px;
+  height: 200px;
+}
+
+#clear-btn {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  background: #6b7280;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  min-width: 400px;
+  white-space: nowrap;
+  z-index: 0; /* Make sure this button stays under the hover ring */
+}
+
+#clear-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+  z-index: -1; /* Send the pseudo-element behind the button text */
+}
+
+#clear-btn:hover {
+  background: #4b5563;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(75, 85, 99, 0.4);
+}
+
+#clear-btn:hover::before {
+  width: 600px; /* Increased for full coverage */
+  height: 600px;
+}
+
+#output {
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  margin: 20px 0;
+  min-height: 60px;
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+#weather-icon {
+  display: block;
+  margin: 0 auto;
+  width: 100px; /* Increased from 80px to 100px */
+  height: 100px; /* Increased from 80px to 100px */
+  transition: transform 0.3s ease;
+  object-fit: contain;
+}
+
+#weather-icon:hover {
+  transform: scale(1.1);
+}
+
+#weather-icon[src=""], #weather-icon:not([src]) {
+  background: url('https://via.placeholder.com/100?text=Weather') no-repeat center; /* Updated size */
+  background-size: cover;
+}
+
+/* Loader styles */
+.loader {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Center the loading div */
+#loading {
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  to {
+      opacity: 1;
+  }
+}
+
+@media (max-width: 400px) {
+  #weather-info {
+      padding: 25px; /* Adjusted from 20px */
+  }
+
+  #location, #search-btn, #clear-btn {
+      font-size: 14px;
+      padding: 12px; /* Adjusted from 10px */
+  }
+
+  #weather-icon {
+      width: 70px; /* Adjusted from 60px */
+      height: 70px; /* Adjusted from 60px */
+  }
+}
